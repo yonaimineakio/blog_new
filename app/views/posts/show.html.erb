@@ -1,0 +1,21 @@
+<div id="show_screen">
+<div class="d-flex align-items-center mt-4 mb-4">
+    <div class="ml-auto posts_button">
+        <%= link_to "投稿一覧", posts_path, class: 'btn btn-outline-info'%>
+        <%= link_to "編集", edit_post_path, class: "btn btn-outline-info"%>
+        <%= link_to "削除", post_path, class: "btn btn-outline-info", method: :delete, data: {confirm: "投稿記事を削除しますか？", cancel: "キャンセル", commit: "削除する", title: "削除確認"}%>
+
+    </div>
+</div>
+<% if flash[:notice]%>
+<%= content_tag(:div, flash[:notice], class: "alert alert-primary")%>
+<% end%>
+
+<%= render @post%>
+<div class="p-comment_list">
+  <div class="p-comment_listTitle">コメント</div>
+  <%= render @post.comments%>
+</div>
+
+<%= render partial: "comments/form", locals: {comment: @comment}%>
+</div>

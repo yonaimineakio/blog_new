@@ -1,0 +1,50 @@
+// Place all the styles related to the Posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#post-screen {
+
+  padding-top: 70px;
+  width:75%;
+  height: 90%;
+  margin: 0 auto;
+}
+
+#index-screen {
+  padding-top: 190px;
+  width:75%;
+  height: 90%;
+  margin: 0 auto;
+
+}
+
+#show_screen {
+  padding-top: 190px;
+  width:75%;
+  height: 90%;
+  margin: 0 auto;
+
+}
+
+.content {
+    padding-top: 190px;
+}
+
+.posts_button {
+    a {
+        margin: 0 8px;
+    }
+}
+
+.posts_table {
+    tr:hover {
+        cursor: pointer;
+    }
+}
+.edit-screen {
+  padding-top: 190px;
+  width:75%;
+  height: 90%;
+  margin: 0 auto;
+}
