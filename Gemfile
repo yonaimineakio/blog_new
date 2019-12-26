@@ -42,9 +42,13 @@ gem 'bootstrap', '~>4.0.0'
 # gem 'bcrypt', '~> 3.1.7'
 gem "jquery-rails"
 
-gem "aws-sdk"
 
-gem 'aws-sdk-rails'
+
+gem "fog-aws"
+
+gem 'rmagick'
+
+gem 'carrierwave'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

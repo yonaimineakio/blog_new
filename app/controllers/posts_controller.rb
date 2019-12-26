@@ -10,6 +10,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+
     if @post.save
       flash[:notice] = "「#{@post.title}」の記事が投稿されました!"
       redirect_to @post
@@ -41,6 +42,8 @@ class PostsController < ApplicationController
   end
 
   def destroy
+
+
     @post.destroy
     flash[:notice] = "「#{@post.title}」の記事を削除しました。"
     redirect_to posts_path
@@ -50,11 +53,13 @@ class PostsController < ApplicationController
   private
 
    def post_params
-     params.require(:post).permit(:name, :title, :content, tag_ids: [])
+     params.require(:post).permit(:name, :title, :content, :image, :video, tag_ids: [])
    end
 
    def set_target_post
      @post=Post.find(params[:id])
    end
+
+
 
 end

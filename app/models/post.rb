@@ -4,6 +4,7 @@
 #
 #  id         :bigint           not null, primary key
 #  content    :text
+#  key        :string
 #  name       :string
 #  title      :string
 #  created_at :datetime         not null
@@ -18,5 +19,7 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :post_tag_relations, dependent: :delete_all
   has_many :tags, through: :post_tag_relations
+  mount_uploader :image, ImageUploader
+  mount_uploader :video, VideoUploader
 
 end

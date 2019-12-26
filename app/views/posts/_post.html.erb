@@ -5,10 +5,17 @@
         <span class="badge badge-light"><%= tag.name %></span>
       <% end%>
   </div>
+  <div>
+    <%= image_tag("#{post.image}", {:size =>'300x300', :alt => ""}) %>
+  </div>
+  <div>
+    <%= video_tag post.video_url.to_s,loop: true, controls: true, width: 550, id: "mv"%>
+  </div>
   <div class="card-body">
       <p class="card-text"><%= simple_format(post.content) %></p>
   </div>
   <div class="card-footer">
       <p class="text-right font-weight-bold mr-10"><%= post.name %></p>
   </div>
+
 </div>
