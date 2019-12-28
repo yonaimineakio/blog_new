@@ -18,34 +18,29 @@
 <% if flash[:notice]%>
  <%= content_tag(:div, flash[:notice], class: "alert alert-primary") %>
 <% end%>
+<% @posts.each do |post|%>
+  <article class="post-item">
+        <div class="media-left">
 
-<table class="table table-bordered border-primary table-hover table-sm posts_table">
-  <thead class="bg-info text-light" >
-    <tr>
-      <th scope="col" style="width: 40px">No.</th>
-      <th scospe="col" style="width: 700px">投稿タイトル</th>
-      <th scope="col">投稿者</th>
-      <th scope="col">投稿日</th>
-      <th scope="col">更新日時</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-　　　<!-- 追加 -->
-      <% @posts.each do |post| %>
-        <tr>
-            <th><%= post.id %></th>
-            <td><%= post.title %></td>
-            <td><%= post.name %></td>
-            <td><%= post.created_at.to_s(:datetime_base) %></td>
-            <td><%= post.updated_at.to_s(:datetime_base) %></td>
-            <td><%= link_to '詳細', "posts/#{post.id}", class: 'btn btn-outline-info' %></td>
-            <td><%= link_to "削除", "posts/#{post.id}", class: "btn btn-outline-info", method: :delete, data: {confirm: "投稿記事を削除しますか？", cancel: "キャンセル", commit: "削除する", title: "削除確認" } %></td>
-
-        </tr>
-      <% end %>
-  </tbody>
-</table>
-  <%= paginate @posts%>
-</div>
+              <%= image_tag "Akio.jpg", class: "media-object", alt: "avatar", size: "100x100"%>
+              <!-- <img src="img/ph_avatar.png" alt="avatar" class="media-object"> -->
+        </div>
+        <div class="media-body">
+          <%= content_tag(:h4, post.name, class: "media-heading")%>
+          <%= content_tag(:p, post.created_at.to_s(:default) ,class: "updated")%>
+        </div>
+        <div class="post-item-body">
+          <div class="post-item-image">
+            <!-- <img src="app/assets/images/bleach.jpg" alt="photo" class="img-responsive"> -->
+            <%= image_tag "#{post.image}", class: "image-responsive", size: "500x600", alt: ""%>
+          </div>
+          <% if post.video.present?%>
+            <%= video_tag post.video_url.to_s,loop: true, controls: true, width: 550, id: "mv"%>
+          <% end%>
+          <%= content_tag(:h3, post.title)%>
+          <%= content_tag(:p, post.content)%>
+          <%= link_to '詳細', "posts/#{post.id}", class: 'btn btn-outline-info' %>
+          <%= link_to "削除", "posts/#{post.id}", class: "btn btn-outline-info", method: :delete, data: {confirm: "投稿記事を削除しますか？", cancel: "キャンセル", commit: "削除する", title: "削除確認" } %>
+          <div class="border-bottom" style="padding:10px;"> </div>
+</article>
+<% end%>

@@ -1,1 +1,1 @@
-Time::DATE_FORMATS[:datetime_base] = '%Y/%m/%d %H:%M'
+Time::DATE_FORMATS[:default] = '%Y/%m/%d %H:%M'

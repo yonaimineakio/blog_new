@@ -48,3 +48,34 @@
   height: 90%;
   margin: 0 auto;
 }
+
+.post-item {
+    margin-bottom: 65px;
+}
+.post-item-header {
+    margin-bottom: 20px;
+}
+.post-item-header .media-body {
+    font-family: "Avenir", serif;
+    vertical-align: middle;
+}
+.post-item-header .media-body .media-heading,
+.post-item-header .media-body .updated {
+    font-size: 20px;
+}
+.post-item-header .media-body .updated {
+    margin-bottom: 0;
+}
+.post-item-header .media-body .updated .icon {
+    margin: 0 10px;
+    vertical-align: -1px;
+}
+.post-item h3 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 36px;
+    font-family: "Playfair Display", serif;
+}
+.post-item p {
+    font-size: 21px;
+}
