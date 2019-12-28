@@ -9,7 +9,9 @@
     <%= image_tag("#{post.image}", {:size =>'300x300', :alt => ""}) %>
   </div>
   <div>
-    <%= video_tag post.video_url.to_s,loop: true, controls: true, width: 550, id: "mv"%>
+    <%if post.video.present?%>
+      <%= video_tag post.video_url.to_s,loop: true, controls: true, width: 550, id: "mv"%>
+    <% end%>
   </div>
   <div class="card-body">
       <p class="card-text"><%= simple_format(post.content) %></p>
