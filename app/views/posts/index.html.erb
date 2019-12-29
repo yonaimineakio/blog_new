@@ -31,8 +31,9 @@
         </div>
         <div class="post-item-body">
           <div class="post-item-image">
-            <!-- <img src="app/assets/images/bleach.jpg" alt="photo" class="img-responsive"> -->
-            <%= image_tag "#{post.image}", class: "image-responsive", size: "500x600", alt: ""%>
+            <% if post.image.present? %>
+              <%= image_tag "#{post.image}", class: "image-responsive", size: "500x600"%>
+            <% end%>
           </div>
           <% if post.video.present?%>
             <%= video_tag post.video_url.to_s,loop: true, controls: true, width: 550, id: "mv"%>
