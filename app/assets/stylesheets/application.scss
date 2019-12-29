@@ -27,7 +27,7 @@
 }
 
 html {
-  
+
     margin:0px;
 
     width:1480px;
@@ -40,12 +40,12 @@ html {
 }
 
 body {
-  
+
   width:100%;
 
   height: 100%;
 
-  
+
 }
  a {
    color: inherit;
@@ -61,7 +61,7 @@ header{
     background: #000033;
     opacity: 0.8;
     font-family: 'Permanent Marker', cursive;
-    z-index: 1;
+    
   }
 
   .alert {
@@ -70,20 +70,34 @@ header{
   }
 
 @media screen and (max-width: 750px) {
-  
+
     html {
-      
+
     margin: 0;
 
 
     width:800px;
-      
-    height: 500px;
-    
 
-    
+    height: 500px;
+
+
+
 
   }
-  
+@media screen and (max-width: 400px) {
+ html {
+   margin: 0;
+   width: 400px;
+   height: 820px;
+ }
+
+
+
+
+
+
+
+
+}
 
 }
