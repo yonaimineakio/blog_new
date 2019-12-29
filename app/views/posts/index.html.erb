@@ -30,19 +30,22 @@
           <%= content_tag(:p, post.created_at.to_s(:default) ,class: "updated")%>
         </div>
         <div class="post-item-body">
-          <div class="post-item-image">
-            <% if post.image.present? %>
-              <%= image_tag "#{post.image}", class: "image-responsive", size: "500x600"%>
-            <% end%>
+         <% if post.image.present? %>
+             <div class="post-item-image">
+               <%= image_tag "#{post.image}"%>
+           </div>
+        <% end%>
+        <% if post.video.present?%>
+          <div class="post-item-video">
+            <%= video_tag post.video_url.to_s,loop: true, controls: true, id: "mv"%>
           </div>
-          <% if post.video.present?%>
-            <%= video_tag post.video_url.to_s,loop: true, controls: true, width: 550, id: "mv"%>
-          <% end%>
+        <% end%>
           <%= content_tag(:h3, post.title)%>
           <%= content_tag(:p, post.content)%>
           <%= link_to '詳細', "posts/#{post.id}", class: 'btn btn-outline-info' %>
           <%= link_to "削除", "posts/#{post.id}", class: "btn btn-outline-info", method: :delete, data: {confirm: "投稿記事を削除しますか？", cancel: "キャンセル", commit: "削除する", title: "削除確認" } %>
           <div class="border-bottom" style="padding:10px;"> </div>
+        </div>
 </article>
 <% end%>
 <%= paginate @posts%>
