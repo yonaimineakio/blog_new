@@ -12,6 +12,8 @@
 
     margin: 0px;
 
+
+
     background-image: url("railway.jpg");
 
      /* 画像を常に天地左右の中央に配置 */
@@ -30,40 +32,48 @@
     background-color: #464646;
 
     font-family: 'Permanent Marker', cursive;
+
+    text-align: center;
   }
 
 
-.title {
-    display: inline-block;
 
-}
 
-.title h1 {
-  margin: 20px;
-}
+
 
 .content-home {
-  height: 80%;
-  width: 90%;
-  margin: 0 auto;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  display: grid;
+  grid-template-columns:  0.4fr 1fr 1fr 1fr 1fr 0.4fr;
+  grid-template-rows: 0.5fr 1fr 50px 1fr 1fr;
+
+
 }
 
 .content-title-home {
-  text-align: center;
+
+
+  grid-row: 2 / 4;
+  grid-column: 2 / 6;
+  align-self: end;
   color: white;
-  padding: 300px;
-  height: 80%;
-  width: 90%;
-  font-size: 6rem;
+
+  // height: 80%;
+  // width: 90%;
+  font-size: 4rem;
 
 
 }
 
-.content-title-home h1{
 
-  font-size: 100%;
-}
-
+ .content-description-home{
+   color: white;
+   grid-row: 4 / 6;
+   grid-column: 2 / 6;
+   align-self: start;
+ }
 
 
 
@@ -102,7 +112,7 @@
   text-align: center;
   display: grid;
   grid-template-columns:  0.4fr 1fr 1fr 1fr 1fr 0.4fr;
-  grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr 0.5fr;
 }
 
 #intro-about {
@@ -140,12 +150,19 @@
   display: inline-block;
 }
 
+
+// 追加
+.posts__select {
+  display: inline-block;
+  width: auto;
+}
+
 // スマホ用
 
 @media screen and (max-width: 400px) {
   #intro-about {
     align-self: end;
-    grid-row: 4 / end;
+    grid-row: 5 / end;
     grid-column: 2 / 6;
     color:white;
   }
@@ -153,7 +170,7 @@
   #under-image-about {
 
     align-self: center;
-    grid-row: 2 / 4;
+    grid-row: 3 / 4;
     grid-column: 2 / 6;
 
 
@@ -169,14 +186,8 @@
 
 
   }
+//スマホ用　終了
 
 
 
-
-}
-
-// 追加
-.posts__select {
-  display: inline-block;
-  width: auto;
 }
