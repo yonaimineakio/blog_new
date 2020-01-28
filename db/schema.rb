@@ -10,19 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_26_141720) do
+ActiveRecord::Schema.define(version: 2020_01_28_124233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "admin_users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "password_digest"
-    t.index ["email"], name: "index_admin_users_on_email", unique: true
-  end
 
   create_table "comments", force: :cascade do |t|
     t.bigint "post_id"
@@ -50,6 +41,8 @@ ActiveRecord::Schema.define(version: 2019_12_26_141720) do
     t.datetime "updated_at", null: false
     t.string "image"
     t.string "video"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -58,7 +51,16 @@ ActiveRecord::Schema.define(version: 2019_12_26_141720) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "password_digest"
+    t.boolean "admin", default: false, null: false
+    t.string "image"
+  end
+
   add_foreign_key "comments", "posts"
   add_foreign_key "post_tag_relations", "posts"
   add_foreign_key "post_tag_relations", "tags"
+  add_foreign_key "posts", "users"
 end

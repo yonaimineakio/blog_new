@@ -1,4 +1,4 @@
-<div id="index-screen">
+<div id='index-screen'>
 <div class="d-flex align-items-center">
     <h1>投稿一覧</h1>
     <div class="ml-auto posts_button">
@@ -15,14 +15,13 @@
         <%=  link_to "投稿", new_post_path, class: "btn btn-outline-info"%>
     </div>
 </div>
-<% if flash[:notice]%>
- <%= content_tag(:div, flash[:notice], class: "alert alert-primary") %>
-<% end%>
+<%= render 'shared/error_messages'%>
+
 <% @posts.each do |post|%>
   <article class="post-item">
         <div class="media-left">
 
-              <%= image_tag "Akio.jpg", class: "media-object", alt: "avatar", size: "100x100"%>
+              <%= image_tag "#{post.user.image}", class: "media-object", alt: "avatar", size: "100x100"%>
               <!-- <img src="img/ph_avatar.png" alt="avatar" class="media-object"> -->
         </div>
         <div class="media-body">
@@ -32,7 +31,7 @@
         <div class="post-item-body">
          <% if post.image.present? %>
              <div class="post-item-image">
-               <%= image_tag "#{post.image}"%>
+               <%= image_tag "#{post.image}", class: 'media-object' ,size: "250x150"%>
            </div>
         <% end%>
         <% if post.video.present?%>
@@ -49,3 +48,4 @@
 </article>
 <% end%>
 <%= paginate @posts%>
+</div>

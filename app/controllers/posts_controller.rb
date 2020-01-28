@@ -1,19 +1,25 @@
 class PostsController < ApplicationController
 
   before_action :set_target_post, only: [:edit, :update, :destroy, :show]
-
+  before_action :login_user, only: [:index, :create, :new]
+  skip_before_action :login_required, only: :index
 
   def index
-     @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
-     @posts = @posts.page(params[:page])
+     if @user
+       @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : @user.posts
+       @posts = @posts.page(params[:page])
+    else
+      @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
+      @posts = @posts.page(params[:page])
+    end
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = @user.posts.build(post_params)
 
     if @post.save
-      flash[:notice] = "「#{@post.title}」の記事が投稿されました!"
-      redirect_to @post
+      flash[:info] = "「#{@post.title}」の記事が投稿されました!"
+      redirect_to posts_path
     else
       redirect_to new_post_path, flash: {
         post: @post,
@@ -24,7 +30,7 @@ class PostsController < ApplicationController
 
   def new
 
-    @post = Post.new
+    @post = @user.posts.build
 
   end
 
@@ -37,7 +43,7 @@ class PostsController < ApplicationController
 
   def update
     @post.update_attributes(post_params)
-    flash[:notice] = "「#{@post.title}」の記事が更新されました!"
+    flash[:info] = "「#{@post.title}」の記事が更新されました!"
     redirect_to @post
   end
 
@@ -45,7 +51,7 @@ class PostsController < ApplicationController
 
 
     @post.destroy
-    flash[:notice] = "「#{@post.title}」の記事を削除しました。"
+    flash[:info] = "「#{@post.title}」の記事を削除しました。"
     redirect_to posts_path
   end
 
@@ -57,7 +63,13 @@ class PostsController < ApplicationController
    end
 
    def set_target_post
-     @post=Post.find(params[:id])
+     @user = current_user if session[:user_id]
+     @post= @user.posts.find_by(id: params[:id])
+   end
+
+   def login_user
+
+     @user = current_user if session[:user_id]
    end
 
 

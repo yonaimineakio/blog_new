@@ -1,0 +1,39 @@
+
+<%= form_with model: [:admin, user], local: true do |f|%>
+  <%= render partial: 'admin/shared/error_messages', locals: {model: f.object}%>
+  <div class='form-group'>
+    <%= f.label :name, '名前'%>
+　   <%= f.text_field :name, class: 'form-control' ,value: user.name%>
+  </div>
+
+  <div class='form-group'>
+    <%= f.label :email, "メール"%>
+    <%= f.text_field :email, class: 'form-control', value: user.email%>
+  </div>
+
+  <div class='form-group'>
+    <%= f.label :image, '画像'%>
+    <%= f.file_field :image, class: 'form-control'%>
+  </div>
+
+  <div class='form-check'>
+    <%= f.label :admin　,class: 'form-check-label' do%>
+        <%= f.check_box :admin, {class:'form-check-input'}, true, false%>
+        管理者権限
+    <% end%>
+  </div>
+
+
+
+    <div class='form-group'>
+      <%= f.label :password, 'パスワード'%>
+      <%= f.password_field :password, class: 'form-control'%>
+    </div>
+
+    <div class='form-group'>
+      <%= f.label :password_confirmation, 'パスワード(確認用)'%>
+　     <%= f.password_field :password_confirmation, class: 'form-control'%>
+    </div>
+    <%= f.submit '登録', class: 'btn btn-primary'%>
+
+<% end%>

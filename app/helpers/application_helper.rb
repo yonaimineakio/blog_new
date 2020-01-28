@@ -1,4 +1,6 @@
 module ApplicationHelper
+
+
   def  header_link_item(name, path)
 
     class_name = "nav-item d-flex justify-content-center"
@@ -7,8 +9,11 @@ module ApplicationHelper
 
 
 
+
     content_tag :li, class: class_name do
       link_to name, path, class: "nav-link"
     end
- end
+
+  end
+
 end

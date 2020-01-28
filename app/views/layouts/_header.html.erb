@@ -6,8 +6,23 @@
     </button>
     <div class="collapse navbar-collapse h3" id="navbarNavAltMarkup">
       <div class="navbar-nav ml-auto">
-        <%= header_link_item('About', about_path) %>
-        <%= header_link_item('Posts', posts_path) %>
+        　<% if current_user&.admin?%>
+          <%= header_link_item('User', admin_users_path)%>
+          <%= header_link_item('New', new_admin_user_path)%>
+          <%= header_link_item('Posts', posts_path) %>
+           <li class='nav-item d-flex justify-content-center'><%= link_to 'Logout', logout_path, class: 'nav-link', method: :delete%></li>
+         <% elsif current_user%>
+          <%= header_link_item('Post', new_post_path)%>
+          <%= header_link_item('Posts board', posts_path) %>
+          <li class='nav-item d-flex justify-content-center'><%= link_to 'Logout', logout_path, class: 'nav-link', method: :delete%></li>
+         <% else%>
+          <%= header_link_item('login', login_path)%>
+          <%= header_link_item('About', about_path) %>
+          <%= header_link_item('Posts board', posts_path) %>
+
+
+         <% end%>
+
       </div>
     </div>
   </nav>
