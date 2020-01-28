@@ -18,4 +18,22 @@ if Rails.env ==  "development"
         { name: 'TDD' }
     ])
 
+    User.create(
+      name: '与那嶺あきお',
+      email: 'akio.yonamine.akarie@gmail.com',
+      password: 'akarie4274',
+      password_confirmation: 'akarie4274',
+      admin: true,
+      image: open("#{Rails.root}/assets/images/Akio.jpg")
+    )
+
+    User.create(
+      name: 'sample',
+      email: 'sample@sample.com',
+      password: 'password',
+      password_confirmation: 'password',
+      admin: false,
+      image: open("#{Rails.root}/assets/images/in-the-quiet-bar.jpg")
+    )
+
 end

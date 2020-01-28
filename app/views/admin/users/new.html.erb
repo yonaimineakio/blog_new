@@ -1,0 +1,9 @@
+<div id='user-screen'>
+  <div class='d-flex align-items-center'>
+        <h1>ユーザー登録</h1>
+          <div class='ml-auto posts_button'>
+              <%= link_to 'ユーザー一覧', admin_users_path, class: 'btn btn-outline-info'%>
+          </div>
+  </div>
+    <%= render partial: 'admin/shared/form', locals: {user: @user}%>
+</div>

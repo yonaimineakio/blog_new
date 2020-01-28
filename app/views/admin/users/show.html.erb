@@ -1,0 +1,15 @@
+<div id="show_screen">
+  <div class="d-flex align-items-center mt-4 mb-4">
+      <div class="ml-auto posts_button">
+          <%= link_to "ユーザー一覧", admin_users_path, class: 'btn btn-outline-info'%>
+          <%= link_to "編集", edit_admin_user_path(@user), class: "btn btn-outline-info"%>
+          <%= link_to "削除", admin_user_path, class: "btn btn-outline-info", method: :delete, data: {confirm: "投稿記事を削除しますか？", cancel: "キャンセル", commit: "削除する", title: "削除確認"}%>
+
+      </div>
+    </div>
+    <% if flash[:notice]%>
+    <%= content_tag(:div, flash[:notice], class: "alert alert-primary")%>
+    <% end%>
+
+    <%= render partial: 'admin/shared/form', locals: {user: @user}%>
+</div>

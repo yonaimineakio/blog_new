@@ -1,0 +1,10 @@
+<div id='user_screen'>
+  <div class='d-flex align-items-center'>
+    <%= render 'shared/error_messages'%>
+    <h1>ユーザー編集</h1>
+    <div class='ml-auto posts_button'>
+      <%= link_to 'ユーザー一覧', admin_users_path, class: 'btn btn-outline-info' %>
+    </div>
+  </div>
+   <%= render partial: 'admin/shared/form', locals: {user: @user}%>
+</div>
