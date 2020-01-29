@@ -11,7 +11,11 @@ class SessionController < ApplicationController
 
     if user&.authenticate(session_params[:password])
       session[:user_id] = user.id
-      redirect_to admin_users_path, notice: 'ログインに成功しました。'
+      if user.admin?
+        redirect_to admin_users_path, info: '管理者としてログインしました。'
+      else
+        redirect_to posts_path, info: 'ログインしました。'
+      end
     else
       flash.now[:danger] = 'ログインに失敗しました。'
       render :new
