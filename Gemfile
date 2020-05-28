@@ -10,7 +10,7 @@ gem "annotate"
 
 gem "kaminari"
 
-gem 'kaminari-core', '~> 1.1', '>= 1.1.1'
+gem 'kaminari-core', '~> 1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
